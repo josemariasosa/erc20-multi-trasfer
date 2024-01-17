@@ -29,6 +29,8 @@ contract MultiTransfer is ReentrancyGuard {
         require(_amount >= accumAmount, "Insufficient amount");
 
         // Returning the change 🪙
-        if (accumAmount < _amount) { _token.transfer(msg.sender, _amount - accumAmount); }
+        if (accumAmount < _amount) {
+            require(_token.transfer(msg.sender, _amount - accumAmount), "Transfer failed");
+        }
     }
 }
