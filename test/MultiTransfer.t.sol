@@ -1,5 +1,5 @@
-// SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.13;
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.20;
 
 import "../src/MultiTransfer.sol";
 import "forge-std/Test.sol";
@@ -44,7 +44,7 @@ contract MultiTransferTest is Test {
 
         vm.startPrank(owner);
         token.approve(address(multiTransfer), _amount);
-        multiTransfer.multiTransfer(IERC20(address(token)), _amount, transfers);
+        multiTransfer.multiTransfer(IERC20(address(token)), transfers);
         vm.stopPrank();
 
         // Assert
@@ -71,7 +71,7 @@ contract MultiTransferTest is Test {
         vm.startPrank(owner);
         token.approve(address(multiTransfer), _amount);
         uint256 currentBalance = token.balanceOf(owner);
-        multiTransfer.multiTransfer(IERC20(address(token)), _amount, transfers);
+        multiTransfer.multiTransfer(IERC20(address(token)), transfers);
         // owner balance after sending 2 more and getting it back as change.
         assertEq(currentBalance - _amount + 2, token.balanceOf(owner));
         vm.stopPrank();
@@ -90,7 +90,7 @@ contract MultiTransferTest is Test {
 
         vm.startPrank(owner);
         token.approve(address(multiTransfer), lessTotalAmount);
-        multiTransfer.multiTransfer(IERC20(address(token)), _amount, transfers);
+        multiTransfer.multiTransfer(IERC20(address(token)), transfers);
         vm.stopPrank();
     }
 
@@ -107,7 +107,7 @@ contract MultiTransferTest is Test {
 
         vm.startPrank(owner);
         token.approve(address(multiTransfer), _amount);
-        multiTransfer.multiTransfer(IERC20(address(token)), _amount, transfers);
+        multiTransfer.multiTransfer(IERC20(address(token)), transfers);
         vm.stopPrank();
     }
 }

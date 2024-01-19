@@ -66,6 +66,15 @@ forge test
 
 Testing is crucial as it validates the functionality and security of the contract before deployment.
 
+## Deploying
+
+```bash
+
+forge create --rpc-url <YOUR_RPC_URL> --private-key <YOUR_PRIVATE_KEY> YourContract
+forge create --rpc-url https://mainnet.infura.io/v3/09c63ac0668f4f0c8fe0e78b8711f749 --private-key private-key MultiTransfer
+```
+
+
 ## Usage
 
 The contract is deployed in the following networks addresses:
